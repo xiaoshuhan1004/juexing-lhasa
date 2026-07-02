@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>觉行拉萨 · 藏地朝圣空性之旅</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "PingFang SC", "Microsoft YaHei", "Helvetica Neue", sans-serif;
+    background: #fff;
+    color: #333;
+    line-height: 1.8;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  /* ===== 公众号容器 ===== */
+  .article {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 20px 16px 40px;
+  }
+
+  /* ===== 顶部引导 ===== */
+  .top-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 0 16px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 20px;
+  }
+  .top-bar .avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #d4a853, #e8c97a);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+  .top-bar .info { flex: 1; }
+  .top-bar .info .name { font-size: 0.9rem; font-weight: 600; color: #222; }
+  .top-bar .info .desc { font-size: 0.75rem; color: #999; }
+
+  /* ===== 标题区 ===== */
+  .article-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 12px;
+    color: #1a1a1a;
+    letter-spacing: 1px;
+  }
+  .article-meta {
+    font-size: 0.8rem;
+    color: #999;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #eee;
+  }
+  .article-meta span { margin-right: 16px; }
+
+  /* ===== 正文 ===== */
+  .article-body p {
+    margin-bottom: 18px;
+    font-size: 0.95rem;
+    text-align: justify;
+  }
+  .article-body strong {
+    color: #1a1a1a;
+    font-weight: 600;
+  }
+
+  /* ===== 小标题 ===== */
+  .section-h2 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #b8860b;
+    margin: 36px 0 14px;
+    padding-left: 12px;
+    border-left: 3px solid #d4a853;
+    line-height: 1.4;
+  }
+  .section-h3 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #333;
+    margin: 24px 0 10px;
+  }
+
+  /* ===== 图片 ===== */
+  .article-img {
+    width: 100%;
+    border-radius: 8px;
+    margin: 20px 0;
+    display: block;
+  }
+  .img-caption {
+    text-align: center;
+    font-size: 0.8rem;
+    color: #999;
+    margin: -12px 0 20px;
+  }
+
+  /* ===== 引用块 ===== */
+  blockquote {
+    margin: 24px 0;
+    padding: 16px 20px;
+    background: #faf8f5;
+    border-left: 3px solid #d4a853;
+    border-radius: 0 8px 8px 0;
+    font-size: 0.92rem;
+    color: #555;
+    line-height: 1.9;
+  }
+  blockquote p { margin-bottom: 0 !important; }
+
+  /* ===== 圣地列表 ===== */
+  .temple-list {
+    margin: 16px 0 24px;
+    padding: 0;
+    list-style: none;
+  }
+  .temple-list li {
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    background: #faf8f5;
+    border-radius: 8px;
+    border-left: 3px solid #d4a853;
+  }
+  .temple-list li .t-name {
+    font-weight: 600;
+    color: #333;
+    font-size: 0.95rem;
+  }
+  .temple-list li .t-desc {
+    font-size: 0.85rem;
+    color: #666;
+    margin-top: 4px;
+  }
+
+  /* ===== 行程卡片 ===== */
+  .day-card {
+    background: #faf8f5;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-bottom: 10px;
+  }
+  .day-card .day-label {
+    display: inline-block;
+    background: linear-gradient(135deg, #d4a853, #e8c97a);
+    color: #fff;
+    padding: 1px 12px;
+    border-radius: 3px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .day-card h4 { font-size: 0.95rem; margin-bottom: 4px; color: #1a1a1a; }
+  .day-card p { font-size: 0.85rem; color: #666; margin: 0 !important; }
+
+  /* ===== 适合人群标签 ===== */
+  .tag-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 16px 0 24px;
+  }
+  .tag-group span {
+    background: #faf8f5;
+    border: 1px solid #e8dcc8;
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-size: 0.82rem;
+    color: #666;
+  }
+
+  /* ===== 报名引导 ===== */
+  .cta-box {
+    margin: 32px 0;
+    padding: 24px;
+    background: linear-gradient(135deg, #faf6f0, #f0e8d8);
+    border-radius: 12px;
+    text-align: center;
+  }
+  .cta-box h3 { font-size: 1.1rem; color: #b8860b; margin-bottom: 8px; }
+  .cta-box p { font-size: 0.88rem; color: #666; margin-bottom: 16px !important; }
+  .cta-btn {
+    display: inline-block;
+    padding: 10px 32px;
+    background: linear-gradient(135deg, #d4a853, #e8c97a);
+    color: #fff;
+    border-radius: 25px;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 600;
+  }
+
+  /* ===== 底部 ===== */
+  .footer-note {
+    margin-top: 36px;
+    padding-top: 16px;
+    border-top: 1px solid #eee;
+    text-align: center;
+    color: #999;
+    font-size: 0.8rem;
+    line-height: 2;
+  }
+
+  /* ===== 金句分隔 ===== */
+  .gold-quote {
+    text-align: center;
+    padding: 20px 0;
+    margin: 24px 0;
+    border-top: 1px solid #e8dcc8;
+    border-bottom: 1px solid #e8dcc8;
+    font-size: 1rem;
+    color: #8b6914;
+    font-weight: 500;
+  }
+
+  @media (max-width: 400px) {
+    .article { padding: 14px 12px 32px; }
+    .article-title { font-size: 1.3rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="article">
+
+  <!-- 公众号头部 -->
+  <div class="top-bar">
+    <div class="avatar">觉行</div>
+    <div class="info">
+      <div class="name">自在觉行</div>
+      <div class="desc">高维朝圣 · 空性觉醒 · 内在财富</div>
+    </div>
+  </div>
+
+  <!-- 标题 -->
+  <h1 class="article-title">觉行拉萨 · 藏地朝圣空性之旅<br>雪域高维朝圣 | 以空性觉醒，唤醒你本自具足的生命财富</h1>
+  <div class="article-meta">
+    <span>自在觉行</span>
+    <span>2026年8月</span>
+    <span>7天6晚</span>
+  </div>
+
+  <div class="article-body">
+
+    <!-- 引言 -->
+    <p>人间所有困顿，归根结底，只有三种底层枷锁：</p>
+    <p><strong>执念的枷锁、关系的枷锁、低频能量的枷锁。</strong></p>
+    <p>财富停滞，是认知被困在低维；关系痛苦，是心念被困在对立；人生迷茫，是能量被困在淤堵。</p>
+    <p>我们一辈子向外追逐资源、追逐贵人、追逐结果，却从未真正觉醒——外在所有匮乏，都是内在空性的缺失。外在所有不顺，都是内在频率的错位。</p>
+    <p>当一个人的维度打不开，再努力、再折腾、再付出，都是消耗。</p>
+    <p><strong>真正的破局，从来不是改变环境，而是升维能量、照见空性、重启生命底层代码。</strong></p>
+
+    <div class="gold-quote">从「不知不觉的低频纠缠」走向「自在自觉的空性圆满」</div>
+
+    <!-- 图片1：布达拉宫 -->
+    <img class="article-img" src="https://cdn.pixabay.com/photo/2015/08/19/03/41/tibet-895493_1280.jpg" alt="布达拉宫" loading="lazy">
+    <div class="img-caption">布达拉宫 · 雪域千年信仰核心</div>
+
+    <!-- 为什么进藏 -->
+    <div class="section-h2">为什么高阶觉醒者，都要进藏朝圣？</div>
+    <p>普通旅行，是看风景、散心、放松情绪。高阶朝圣，是换维度、换频率、换生命剧本。</p>
+    <p>西藏，是地球上极少数高维能量高度集中、天道法则极度通透的修行道场。这里的每一座祖庭、每一处圣湖、每一片山林，都承载着千年正法、修行定力、空性智慧。</p>
+    <p>你在城市多年解不开的结、转不动的运、打不开的财、修不好的关系，是因为环境低频、认知局限、心念淤堵。当你进入高维圣地，千年正法能量直接冲刷你的身、心、念：清理低频纠缠、消融固执认知、打开空性维度、唤醒内在财富。</p>
+    <p><strong>维度一旦打开，人生即刻翻盘。</strong></p>
+
+    <!-- 七大圣地 -->
+    <div class="section-h2">七大圣地 · 空性朝圣</div>
+    <ul class="temple-list">
+      <li>
+        <div class="t-name">❶ 桑耶寺 · 完整宇宙坛城</div>
+        <div class="t-desc">观曼陀罗坛城宇宙真相，照见「本自圆满」的生命本质。清理内在匮乏感、抓取心、缺失感。夜宿道场旁，承接千年正法能量深度浸润。</div>
+      </li>
+      <li>
+        <div class="t-name">❷ 羊卓雍措 · 圣湖高频净水</div>
+        <div class="t-desc">高原碧玉圣湖，以高频净水能量冲刷身心淤堵、财运漏洞、人际狭隘。扩容心胸、福报、承载力。</div>
+      </li>
+      <li>
+        <div class="t-name">❸ 大昭寺 / 布达拉宫 · 千年信仰核心</div>
+        <div class="t-desc">锚定福报根基，重启因果正能。修补自身能量漏洞、夯实事业根基、稳定财富运势。</div>
+      </li>
+      <li>
+        <div class="t-name">❹ 色拉寺 · 思辨破执</div>
+        <div class="t-desc">观喇嘛辩经，破二元对立、破自我偏见、破固执认知。清理事业、人际、决策中的执念卡点。</div>
+      </li>
+      <li>
+        <div class="t-name">❺ 楚布寺 · 看懂生命流转</div>
+        <div class="t-desc">朝拜噶举转世祖庭，解读活佛转世传承、生命轮回真相。彻底放下失去、分离、得不到的内耗。</div>
+      </li>
+      <li>
+        <div class="t-name">❻ 噶丹寺 · 正法扎根</div>
+        <div class="t-desc">格鲁正法源头，稳住心性根基，落地人生秩序、事业根基、心性定力。</div>
+      </li>
+      <li>
+        <div class="t-name">❼ 扎叶巴寺 · 悬崖隐修疗愈</div>
+        <div class="t-desc">千年隐修山洞，深度净化情绪创伤、关系痛苦、自我否定。累年情绪创伤一朝释放。</div>
+      </li>
+    </ul>
+
+    <!-- 图片2：经幡 -->
+    <img class="article-img" src="https://cdn.pixabay.com/photo/2015/03/27/11/10/prayer-flag-694648_1280.jpg" alt="经幡" loading="lazy">
+    <div class="img-caption">经幡飘动 · 藏地信仰的力量</div>
+
+    <!-- 四种力量 -->
+    <div class="section-h2">这场朝圣，唤醒你四种高阶生命力量</div>
+
+    <div class="section-h3">① 唤醒空性智慧 — 破除所有认知盲区</div>
+    <p>凡人活在相里、活在得失里、活在对错里；觉醒者活在空性里、活在本质里、活在全然允许里。所有痛苦，都是太当真；所有匮乏，都是太执着。七天高维浸润，借藏地千年智慧，让你彻底看懂：一切外相皆是虚妄，一切困境皆是心念投射。一念空性，万般卡点自动消融。</p>
+
+    <div class="section-h3">② 唤醒内在财富 — 解锁本自具足的福报频率</div>
+    <p>真正的财富，不是拼命赚钱，是自身能量匹配财富维度。多数人留不住财、打不开局、遇不到贵人，是因为：心性不稳、执念太重、内耗太大、能量太散。雪域高维场域，直接帮你净化耗损能量、修补福报漏洞、锚定富足心念、打开财富承载力。空性越通透，财富越自然。心越无执，命越丰盛。</p>
+
+    <div class="section-h3">③ 修复关系能量 — 终结所有纠缠内耗</div>
+    <p>一切关系问题，本质都是能量不对频、维度不匹配、执念不放下。亲密对立、亲子隔阂、人际消耗、贵人远离，都是内在低频的外显结果。通过圣湖疗愈、山洞静心、正法浸润、智者开示，逐层清理关系创伤、控制欲、抓取心、对抗态。让你从纠缠痛苦，进入包容、松弛、通透、圆满的高阶关系状态。</p>
+
+    <div class="section-h3">④ 升维生命格局 — 改写人生底层运势</div>
+    <p>普通人改运，改的是表面境遇；觉醒者改运，改的是心念频率与生命维度。当你走过七大高维道场，你的认知、心性、格局、承载力全部升级。你原来焦虑的、纠结的、求而不得的，都会在更高维度自动化解。</p>
+
+    <!-- 核心价值 -->
+    <div class="section-h2">本次朝圣 · 高阶独有的核心价值</div>
+    <p><strong>1. 多宗派正法全覆盖</strong><br>一次性走完宁玛、格鲁、噶举三大宗派祖庭，完整读懂生命无常、因果法则、空性真理、轮回真相。不是碎片化感悟，是整套生命认知体系升维。</p>
+    <p><strong>2. 高僧大德一对一高维开示</strong><br>针对你的财富卡点、事业瓶颈、人际纠缠、人生抉择、家族能量，以千年正法智慧，破迷、解惑、扶正、升维。</p>
+    <p><strong>3. 在地资深文化导师 + 心灵双导师带队</strong><br>不只是看寺庙，是带你透过场域看懂能量，透过文化看懂生命，透过现象看懂本质。</p>
+    <p><strong>4. 每日空性静心 + 能量调频共修</strong><br>不赶路、不消耗、高频浸润。每日冥想、觉察、清理、锚定，让身体、心念、能量持续处在高维状态。</p>
+    <p><strong>5. 文成公主史诗实景浸润</strong><br>以星空为道场，以历史为启示，读懂承载、包容、利他的高阶能量，扩容自身福报承载力。</p>
+
+    <!-- 行程 -->
+    <div class="section-h2">7天6晚 · 高维空性朝圣 · 完整升维行程</div>
+    <div class="day-card">
+      <span class="day-label">Day 1</span>
+      <h4>落地拉萨 · 安住高维，清零低频</h4>
+      <p>抵达圣城，入住四星供氧静心居所。适配海拔、休整身心、清零城市杂讯。开营高维启幕：解析「空性、能量、财富、执念」四大底层逻辑。夜间静心调频，锚定七天觉醒磁场。</p>
+    </div>
+    <div class="day-card">
+      <span class="day-label">Day 2</span>
+      <h4>桑耶寺 · 证悟宇宙空性，破除匮乏执念</h4>
+      <p>朝拜藏地第一正法祖庭。观曼陀罗坛城宇宙真相，照见「本自圆满」的生命本质。清理内在匮乏感、抓取心、缺失感。夜宿道场旁，承接千年深夜正法能量深度浸润。</p>
+    </div>
+    <div class="day-card">
+      <span class="day-label">Day 3</span>
+      <h4>羊卓雍措 · 圣湖净水，扩容财富格局</h4>
+      <p>清晨桑耶寺静坐扎根。奔赴高原碧玉圣湖，以圣湖高频净水能量冲刷身心淤堵、财运漏洞、人际狭隘。扩容心胸、福报、承载力。傍晚返回拉萨。</p>
+    </div>
+    <div class="day-card">
+      <span class="day-label">Day 4</span>
+      <h4>大昭寺 · 布达拉宫 · 锚定福报根基</h4>
+      <p>朝拜雪域核心信仰圣殿。读懂千年福报传承、因果运行规律。修补自身能量漏洞、夯实事业根基。晚间观看《文成公主》史诗剧，升维心性承载与利他格局。</p>
+    </div>
+    <div class="day-card">
+      <span class="day-label">Day 5</span>
+      <h4>色拉寺 · 思辨破执，打破认知盲区</h4>
+      <p>观喇嘛辩经，破二元对立、破自我偏见、破固执认知。下午核心高阶：高僧一对一私密开示，解惑人生、财富、事业、婚姻终极困惑。晚间深度复盘，转化智慧。</p>
+    </div>
+    <div class="day-card">
+      <span class="day-label">Day 6</span>
+      <h4>楚布寺 · 看懂生命流转，放下得失内耗</h4>
+      <p>朝拜噶举转世祖庭。解读活佛转世传承、生命轮回真相。闭关洞静心静坐，修「无执、无挂、无耗」的高阶心性。晚间藏地高维文化沙龙。</p>
+    </div>
+    <div class="day-card">
+      <span class="day-label">Day 7</span>
+      <h4>噶丹寺 · 扎叶巴寺 · 扎根正法，圆满归维</h4>
+      <p>上午噶丹寺正法扎根，稳定人生秩序、事业根基、心性定力。下午扎叶巴寺悬崖隐修道场，净化累年情绪创伤。结营圆满仪式，封存高维能量，锚定富足人生。</p>
+    </div>
+
+    <!-- 适合人群 -->
+    <div class="section-h2">谁最需要这场「空性财富觉醒朝圣」</div>
+    <div class="tag-group">
+      <span>事业停滞·财富卡点</span>
+      <span>关系纠缠·亲密内耗</span>
+      <span>认知被困·迷茫焦虑</span>
+      <span>能量散乱·内耗严重</span>
+      <span>渴望唤醒智慧</span>
+      <span>渴望打开富足</span>
+    </div>
+
+    <blockquote>
+      <p>山河不语，却载千年正法；道场无言，却渡万般迷茫。</p>
+      <p style="margin-top:10px!important;">凡夫向外求财富、求贵人、求答案；觉醒者向内修空性、修能量、修圆满。</p>
+      <p style="margin-top:10px!important;">一次高维朝圣，破执念、升智慧、通能量、开财富、圆满人生。</p>
+    </blockquote>
+
+    <!-- 报名引导 -->
+    <div class="cta-box">
+      <h3>🙏 席位稀缺 · 预定从速</h3>
+      <p>仅留给真正渴望觉醒、升维、破局的同频高阶者<br>静待与你雪域相遇，共证空性，同启圆满人生</p>
+      <a class="cta-btn" href="file:///Users/xiaoshuhan/Desktop/闲鱼图片/觉行拉萨-报名页-改进版.html" target="_blank">立即报名 →</a>
+      <p style="font-size:0.78rem;color:#999;margin-top:12px!important;">点击上方按钮填写报名信息</p>
+    </div>
+
+  </div>
+
+  <!-- 底部 -->
+  <div class="footer-note">
+    <p>#自在觉行高阶朝圣</p>
+    <p>#空性觉醒 · 智慧升维</p>
+    <p>#唤醒内在财富 · 重塑生命能量</p>
+    <p style="margin-top:10px;font-size:0.75rem;">🙏 愿一切众生离苦得乐，圆满自在</p>
+  </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>觉行拉萨 · 藏地朝圣空性之旅</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Noto Sans SC', sans-serif; background: #faf6f0; color: #2d2416; line-height: 1.8; }
+
+  /* ========== 顶部经幡横幅 ========== */
+  .top-banner {
+    position: relative;
+    height: 80px;
+    background: linear-gradient(135deg, #e8d5b7, #f5e6d0);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .top-banner .prayer-flags {
+    display: flex;
+    gap: 0;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+  }
+  .top-banner .flag {
+    flex: 1;
+    height: 100%;
+    opacity: 0.6;
+  }
+  .top-banner .flag:nth-child(1) { background: #c0392b; }
+  .top-banner .flag:nth-child(2) { background: #27ae60; }
+  .top-banner .flag:nth-child(3) { background: #f39c12; }
+  .top-banner .flag:nth-child(4) { background: #2c3e50; }
+  .top-banner .flag:nth-child(5) { background: #e74c3c; }
+  .top-banner .flag:nth-child(6) { background: #8e44ad; }
+  .top-banner .flag:nth-child(7) { background: #16a085; }
+  .top-banner .flag:nth-child(8) { background: #d35400; }
+
+  /* ========== 主视觉区 ========== */
+  .hero {
+    position: relative;
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: url('https://cdn.pixabay.com/photo/2015/08/19/03/41/tibet-895493_1280.jpg') center center / cover no-repeat;
+    filter: brightness(0.7) saturate(1.1);
+    z-index: 0;
+  }
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(250,246,240,0) 0%, rgba(250,246,240,0.85) 70%, #faf6f0 100%);
+    z-index: 1;
+  }
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    padding: 0 24px;
+    margin-top: -40px;
+  }
+  .hero .om {
+    font-size: 3rem;
+    color: #d4a853;
+    font-family: serif;
+    margin-bottom: 8px;
+    opacity: 0.9;
+  }
+  .hero h1 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(2.4rem, 6vw, 4.2rem);
+    font-weight: 900;
+    color: #2d2416;
+    margin-bottom: 12px;
+    letter-spacing: 6px;
+  }
+  .hero .subtitle {
+    font-size: clamp(1rem, 2.5vw, 1.6rem);
+    color: #6b5a44;
+    font-weight: 300;
+    letter-spacing: 8px;
+    margin-bottom: 24px;
+  }
+  .hero .meta-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  .hero .meta-info span {
+    background: rgba(212, 168, 83, 0.2);
+    border: 1px solid rgba(212, 168, 83, 0.3);
+    padding: 6px 18px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    color: #6b5a44;
+  }
+  .hero .scroll-down {
+    margin-top: 40px;
+    animation: bounce 2s infinite;
+  }
+  @keyframes bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(8px); } }
+
+  /* ========== 通用 ========== */
+  .section {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 60px 24px;
+  }
+  .section-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-weight: 700;
+    color: #2d2416;
+    text-align: center;
+    margin-bottom: 10px;
+    letter-spacing: 4px;
+  }
+  .section-subtitle {
+    text-align: center;
+    color: #8b7a64;
+    font-size: 0.95rem;
+    margin-bottom: 40px;
+    font-weight: 300;
+  }
+  .divider {
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #d4a853, transparent);
+    margin: 0 auto 40px;
+  }
+
+  /* ========== 图片横幅分隔 ========== */
+  .image-banner {
+    width: 100%;
+    height: 50vh;
+    min-height: 300px;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    position: relative;
+  }
+  .image-banner .caption {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(0,0,0,0.5);
+    color: #eee;
+    padding: 4px 14px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+  }
+
+  /* ========== 三大枷锁 ========== */
+  .shackles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+  }
+  .shackle-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 32px 24px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border-top: 3px solid #d4a853;
+    transition: transform 0.3s;
+  }
+  .shackle-card:hover { transform: translateY(-4px); }
+  .shackle-card .icon { font-size: 2.4rem; margin-bottom: 12px; }
+  .shackle-card h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 10px; color: #2d2416; }
+  .shackle-card p { font-size: 0.9rem; color: #6b5a44; line-height: 1.7; }
+
+  /* ========== 七大圣地 ========== */
+  .temples-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+  }
+  .temple-card {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    transition: transform 0.3s;
+  }
+  .temple-card:hover { transform: translateY(-4px); }
+  .temple-card .img {
+    height: 140px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+  }
+  .temple-card .badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: rgba(212, 168, 83, 0.9);
+    color: #fff;
+    padding: 2px 10px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 600;
+  }
+  .temple-card .info { padding: 16px; }
+  .temple-card .info h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 4px; }
+  .temple-card .info .tibet-name { font-size: 0.75rem; color: #d4a853; margin-bottom: 6px; font-family: serif; }
+  .temple-card .info p { font-size: 0.82rem; color: #6b5a44; line-height: 1.6; }
+
+  /* ========== 四种力量 ========== */
+  .powers-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  @media (max-width: 700px) { .powers-container { grid-template-columns: 1fr; } }
+  .power-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 28px 24px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+  }
+  .power-card .num {
+    position: absolute;
+    right: 16px;
+    top: 10px;
+    font-size: 3.6rem;
+    font-weight: 900;
+    color: rgba(212, 168, 83, 0.15);
+    font-family: serif;
+  }
+  .power-card h3 { font-size: 1.05rem; font-weight: 700; color: #2d2416; margin-bottom: 8px; }
+  .power-card h3 span { color: #d4a853; }
+  .power-card p { font-size: 0.88rem; color: #6b5a44; line-height: 1.7; }
+
+  /* ========== 核心价值 ========== */
+  .values-list {
+    display: grid;
+    gap: 16px;
+  }
+  .value-item {
+    display: flex;
+    gap: 16px;
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px 24px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+  .value-item .v-icon {
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    background: linear-gradient(135deg, #d4a853, #e8c97a);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: #fff;
+  }
+  .value-item .v-text h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 4px; }
+  .value-item .v-text p { font-size: 0.85rem; color: #6b5a44; line-height: 1.6; }
+
+  /* ========== 行程时间线 ========== */
+  .timeline { position: relative; padding-left: 40px; }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 16px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg, #d4a853, #e8c97a, #d4a853);
+  }
+  .timeline-item {
+    position: relative;
+    margin-bottom: 28px;
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px 24px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+  .timeline-item .dot {
+    position: absolute;
+    left: -32px;
+    top: 24px;
+    width: 12px;
+    height: 12px;
+    background: #d4a853;
+    border-radius: 50%;
+    border: 3px solid #faf6f0;
+  }
+  .timeline-item .day {
+    display: inline-block;
+    background: linear-gradient(135deg, #d4a853, #e8c97a);
+    color: #fff;
+    padding: 2px 14px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .timeline-item h4 { font-size: 1rem; margin-bottom: 6px; color: #2d2416; }
+  .timeline-item p { font-size: 0.85rem; color: #6b5a44; line-height: 1.7; }
+
+  /* ========== 报名表单 ========== */
+  .form-section {
+    background: linear-gradient(135deg, #f5ede0, #efe4d2);
+    padding: 60px 24px;
+  }
+  .form-container {
+    max-width: 640px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 16px;
+    padding: 40px 32px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  }
+  .form-container h2 { font-family: 'Noto Serif SC', serif; text-align: center; margin-bottom: 6px; color: #2d2416; }
+  .form-container .form-sub { text-align: center; font-size: 0.85rem; color: #8b7a64; margin-bottom: 28px; }
+  .form-group { margin-bottom: 18px; }
+  .form-group label { display: block; font-size: 0.85rem; font-weight: 500; margin-bottom: 4px; color: #2d2416; }
+  .form-group label .required { color: #c0392b; }
+  .form-group input, .form-group select, .form-group textarea {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-family: inherit;
+    background: #fafaf8;
+    transition: border-color 0.3s;
+  }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+    outline: none;
+    border-color: #d4a853;
+    background: #fff;
+  }
+  .form-group textarea { min-height: 80px; resize: vertical; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 500px) { .form-row { grid-template-columns: 1fr; } }
+  .submit-btn {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg, #d4a853, #e8c97a);
+    border: none;
+    border-radius: 8px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+    transition: opacity 0.3s;
+    font-family: inherit;
+  }
+  .submit-btn:hover { opacity: 0.9; }
+
+  /* ========== 底部 ========== */
+  footer {
+    text-align: center;
+    padding: 32px 24px;
+    color: #8b7a64;
+    font-size: 0.8rem;
+  }
+  footer .om-symbol { font-size: 1.6rem; color: #d4a853; font-family: serif; margin-bottom: 8px; }
+
+  /* ========== 适合人群 ========== */
+  .audience-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+  }
+  .audience-tags span {
+    background: rgba(212, 168, 83, 0.1);
+    border: 1px solid rgba(212, 168, 83, 0.3);
+    padding: 8px 20px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    color: #6b5a44;
+  }
+  .audience-tags span::before { content: '✔ '; color: #d4a853; }
+
+  /* ========== 金句引用 ========== */
+  .quote-block {
+    max-width: 700px;
+    margin: 40px auto;
+    text-align: center;
+    padding: 32px 24px;
+    border-top: 1px solid rgba(212,168,83,0.3);
+    border-bottom: 1px solid rgba(212,168,83,0.3);
+  }
+  .quote-block p { font-family: 'Noto Serif SC', serif; font-size: 1.1rem; color: #2d2416; line-height: 2; }
+  .quote-block .author { font-size: 0.85rem; color: #8b7a64; margin-top: 12px; }
+
+  /* 响应式 */
+  @media (max-width: 600px) {
+    .section { padding: 40px 16px; }
+    .form-container { padding: 28px 20px; }
+    .image-banner { height: 30vh; background-attachment: scroll; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== 顶部经幡 ===== -->
+<div class="top-banner">
+  <div class="prayer-flags">
+    <div class="flag"></div><div class="flag"></div><div class="flag"></div><div class="flag"></div>
+    <div class="flag"></div><div class="flag"></div><div class="flag"></div><div class="flag"></div>
+  </div>
+  <span style="position:relative;z-index:1;font-family:'Noto Serif SC',serif;color:#6b5a44;letter-spacing:10px;font-size:0.85rem;opacity:0.6;">ॐ मणि पद्मे हूँ</span>
+</div>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="om">ༀ</div>
+    <h1>觉行拉萨</h1>
+    <div class="subtitle">藏地朝圣 · 空性之旅</div>
+    <p style="color:#6b5a44;max-width:600px;margin:0 auto;font-size:1rem;">
+      雪域高维朝圣 · 以空性觉醒<br>
+      唤醒你本自具足的生命财富
+    </p>
+    <div class="meta-info">
+      <span>📍 拉萨 · 西藏</span>
+      <span>📅 2026年8月15日-21日</span>
+      <span>⏳ 7天6晚</span>
+      <span>🏛️ 七大圣地</span>
+    </div>
+    <div class="scroll-down">↓</div>
+  </div>
+</section>
+
+<!-- ===== 三大枷锁 ===== -->
+<section class="section">
+  <h2 class="section-title">人生三种底层枷锁</h2>
+  <div class="divider"></div>
+  <p class="section-subtitle">人间所有困顿，归根结底，只有三种</p>
+  <div class="shackles-grid">
+    <div class="shackle-card">
+      <div class="icon">⛓️</div>
+      <h3>执念的枷锁</h3>
+      <p>财富停滞，是认知被困在低维。我们一辈子向外追逐资源、追逐贵人、追逐结果，却从未真正觉醒：外在所有匮乏，都是内在空性的缺失。</p>
+    </div>
+    <div class="shackle-card">
+      <div class="icon">🔗</div>
+      <h3>关系的枷锁</h3>
+      <p>关系痛苦，是心念被困在对立。亲密对立、亲子隔阂、人际消耗、贵人远离，都是内在低频的外显结果。</p>
+    </div>
+    <div class="shackle-card">
+      <div class="icon">🌀</div>
+      <h3>低频能量的枷锁</h3>
+      <p>人生迷茫，是能量被困在淤堵。当一个人的维度打不开，再努力、再折腾、再付出，都是消耗。真正的破局，从来不是改变环境，而是升维能量、照见空性。</p>
+    </div>
+  </div>
+  <div class="quote-block">
+    <p>「从不知不觉的低频纠缠，走向自在自觉的空性圆满」</p>
+  </div>
+</section>
+
+<!-- ===== 图片横幅：经幡 ===== -->
+<div class="image-banner" style="background-image: url('https://cdn.pixabay.com/photo/2015/03/27/11/10/prayer-flag-694648_1280.jpg');">
+  <div class="caption">📷 经幡 · 西藏山口</div>
+</div>
+
+<!-- ===== 七大圣地 ===== -->
+<section class="section">
+  <h2 class="section-title">七大圣地 · 空性朝圣</h2>
+  <div class="divider"></div>
+  <p class="section-subtitle">西藏，地球上极少数高维能量高度集中、天道法则极度通透的修行道场</p>
+
+  <div class="temples-grid">
+    <div class="temple-card">
+      <div class="img" style="background-image: linear-gradient(135deg, #8B4513, #D4A853);"><span class="badge">①</span></div>
+      <div class="info">
+        <h4>桑耶寺</h4>
+        <div class="tibet-name">བསམ་ཡས།</div>
+        <p>完整宇宙坛城，照见万物空性，破除匮乏执念。藏地第一正法祖庭。</p>
+      </div>
+    </div>
+    <div class="temple-card">
+      <div class="img" style="background-image: linear-gradient(135deg, #1a7a9a, #6ec8e0);"><span class="badge">②</span></div>
+      <div class="info">
+        <h4>羊卓雍措</h4>
+        <div class="tibet-name">ཡར་འབྲོག་གཡུ་མཚོ།</div>
+        <p>圣湖高频净水，冲刷业力淤堵，扩容生命格局与财富承载力。</p>
+      </div>
+    </div>
+    <div class="temple-card">
+      <div class="img" style="background-image: linear-gradient(135deg, #c0392b, #e8a87c);"><span class="badge">③</span></div>
+      <div class="info">
+        <h4>大昭寺 / 布达拉宫</h4>
+        <div class="tibet-name">ཇོ་ཁང་། / པོ་ཏ་ལ།</div>
+        <p>千年信仰核心，锚定福报根基，重启因果正能。</p>
+      </div>
+    </div>
+    <div class="temple-card">
+      <div class="img" style="background-image: linear-gradient(135deg, #e67e22, #f5d76e);"><span class="badge">④</span></div>
+      <div class="info">
+        <h4>色拉寺</h4>
+        <div class="tibet-name">སེ་ར།</div>
+        <p>思辨破执道场，破除二元对立，解锁智慧盲区。观喇嘛辩经，破固执认知。</p>
+      </div>
+    </div>
+    <div class="temple-card">
+      <div class="img" style="background-image: linear-gradient(135deg, #2c3e50, #6c7a89);"><span class="badge">⑤</span></div>
+      <div class="info">
+        <h4>楚布寺</h4>
+        <div class="tibet-name">མཚུར་ཕུ།</div>
+        <p>转世传承祖庭，看懂生命流转，放下得失抓取与内耗。</p>
+      </div>
+    </div>
+    <div class="temple-card">
+      <div class="img" style="background-image: linear-gradient(135deg, #8e44ad, #c39bd3);"><span class="badge">⑥</span></div>
+      <div class="info">
+        <h4>噶丹寺</h4>
+        <div class="tibet-name">དགའ་ལྡན།</div>
+        <p>格鲁正法源头，稳住心性根基，落地人生秩序与事业根基。</p>
+      </div>
+    </div>
+    <div class="temple-card">
+      <div class="img" style="background-image: linear-gradient(135deg, #5d4e37, #a0856b);"><span class="badge">⑦</span></div>
+      <div class="info">
+        <h4>扎叶巴寺</h4>
+        <div class="tibet-name">བྲག་ཡེར་པ།</div>
+        <p>千年隐修山洞，深度净化情绪创伤、关系低频，累年情绪疗愈。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 四种力量 ===== -->
+<section class="section" style="background:#f5ede0;max-width:none;">
+  <div style="max-width:1000px;margin:0 auto;">
+    <h2 class="section-title">唤醒四种高阶生命力量</h2>
+    <div class="divider"></div>
+    <div class="powers-container">
+      <div class="power-card">
+        <div class="num">01</div>
+        <h3>🪷 唤醒 <span>空性智慧</span></h3>
+        <p>凡人活在相里、活在得失里、活在对错里；觉醒者活在空性里、活在本质里、活在全然允许里。所有痛苦，都是太当真；所有匮乏，都是太执着。七天高维浸润，一念空性，万般卡点自动消融。</p>
+      </div>
+      <div class="power-card">
+        <div class="num">02</div>
+        <h3>💎 唤醒 <span>内在财富</span></h3>
+        <p>真正的财富不是拼命赚钱，是自身能量匹配财富维度。多数人留不住财、打不开局、遇不到贵人，是因为心性不稳、执念太重、内耗太大。空性越通透，财富越自然。</p>
+      </div>
+      <div class="power-card">
+        <div class="num">03</div>
+        <h3>💞 修复 <span>关系能量</span></h3>
+        <p>一切关系问题，本质都是能量不对频、维度不匹配。通过圣湖疗愈、山洞静心、正法浸润，逐层清理关系创伤、控制欲、抓取心。从纠缠痛苦进入包容松弛的高阶关系状态。</p>
+      </div>
+      <div class="power-card">
+        <div class="num">04</div>
+        <h3>🌄 升维 <span>生命格局</span></h3>
+        <p>普通人改运，改的是表面境遇；觉醒者改运，改的是心念频率与生命维度。当你走过七大高维道场，你的认知、心性、格局、承载力全部升级。原来焦虑的、纠结的，都在更高维度自动化解。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 核心价值 ===== -->
+<section class="section">
+  <h2 class="section-title">本次朝圣 · 高阶核心价值</h2>
+  <div class="divider"></div>
+  <div class="values-list">
+    <div class="value-item">
+      <div class="v-icon">🛕</div>
+      <div class="v-text">
+        <h4>多宗派正法全覆盖</h4>
+        <p>一次性走完宁玛、格鲁、噶举三大宗派祖庭，完整读懂生命无常、因果法则、空性真理。不是碎片化感悟，是整套生命认知体系升维。</p>
+      </div>
+    </div>
+    <div class="value-item">
+      <div class="v-icon">🙏</div>
+      <div class="v-text">
+        <h4>高僧大德一对一高维开示</h4>
+        <p>针对你的财富卡点、事业瓶颈、人际纠缠、人生抉择，以千年正法智慧，破迷、解惑、扶正、升维。</p>
+      </div>
+    </div>
+    <div class="value-item">
+      <div class="v-icon">🧘</div>
+      <div class="v-text">
+        <h4>在地双导师带队</h4>
+        <p>资深文化导师 + 心灵导师带队，不只是看寺庙，是带你透过场域看懂能量，透过文化看懂生命。</p>
+      </div>
+    </div>
+    <div class="value-item">
+      <div class="v-icon">✨</div>
+      <div class="v-text">
+        <h4>每日空性静心 + 能量调频共修</h4>
+        <p>不赶路、不消耗、高频浸润。每日冥想、觉察、清理、锚定，让身体、心念、能量持续处在高维状态。</p>
+      </div>
+    </div>
+    <div class="value-item">
+      <div class="v-icon">🎭</div>
+      <div class="v-text">
+        <h4>文成公主史诗实景浸润</h4>
+        <p>以星空为道场，以历史为启示，读懂承载、包容、利他的高阶能量，扩容自身福报承载力。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 行程 ===== -->
+<section class="section" style="background:#f5ede0;max-width:none;">
+  <div style="max-width:1000px;margin:0 auto;">
+    <h2 class="section-title">7天6晚 · 高维空性朝圣行程</h2>
+    <div class="divider"></div>
+    <div class="timeline">
+      <div class="timeline-item"><div class="dot"></div><span class="day">Day 1</span><h4>落地拉萨 · 安住高维</h4><p>抵达圣城，入住四星供氧静心居所。适配海拔、清零城市杂讯。开营启幕，解析空性、能量、财富、执念四大底层逻辑。夜间静心调频，锚定七天觉醒磁场。</p></div>
+      <div class="timeline-item"><div class="dot"></div><span class="day">Day 2</span><h4>桑耶寺 · 证悟宇宙空性</h4><p>朝拜藏地第一正法祖庭。观曼陀罗坛城宇宙真相，照见"本自圆满"的生命本质。清理内在匮乏感、抓取心、缺失感。夜宿道场旁，承接千年正法能量深度浸润。</p></div>
+      <div class="timeline-item"><div class="dot"></div><span class="day">Day 3</span><h4>羊卓雍措 · 圣湖净水</h4><p>清晨桑耶寺静坐扎根。奔赴高原碧玉圣湖，以高频净水能量冲刷身心淤堵、财运漏洞、人际狭隘。扩容心胸、福报、承载力。傍晚返回拉萨。</p></div>
+      <div class="timeline-item"><div class="dot"></div><span class="day">Day 4</span><h4>大昭寺 · 布达拉宫 · 锚定福报</h4><p>朝拜雪域核心信仰圣殿。读懂千年福报传承、因果运行规律。修补自身能量漏洞、夯实事业根基。晚间观看《文成公主》史诗剧，升维心性承载与利他格局。</p></div>
+      <div class="timeline-item"><div class="dot"></div><span class="day">Day 5</span><h4>色拉寺 · 思辨破执</h4><p>观喇嘛辩经，破二元对立、破自我偏见、破固执认知。下午核心高阶：高僧一对一私密开示，解惑人生终极困惑。晚间深度复盘，转化智慧。</p></div>
+      <div class="timeline-item"><div class="dot"></div><span class="day">Day 6</span><h4>楚布寺 · 放下得失内耗</h4><p>朝拜噶举转世祖庭。解读活佛转世传承、生命轮回真相。闭关洞静心静坐，修"无执、无挂、无耗"的高阶心性。晚间藏地高维文化沙龙。</p></div>
+      <div class="timeline-item"><div class="dot"></div><span class="day">Day 7</span><h4>噶丹寺 · 扎叶巴寺 · 圆满归维</h4><p>上午噶丹寺正法扎根，稳定人生秩序与心性定力。下午扎叶巴寺悬崖隐修道场，净化累年情绪创伤。结营圆满仪式，封存高维能量，锚定富足人生。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 适合人群 ===== -->
+<section class="section">
+  <h2 class="section-title">谁最需要这场朝圣</h2>
+  <div class="divider"></div>
+  <div class="audience-tags">
+    <span>事业停滞 · 财富卡点</span>
+    <span>关系纠缠 · 亲密内耗</span>
+    <span>认知被困 · 迷茫焦虑</span>
+    <span>能量散乱 · 内耗严重</span>
+    <span>渴望升维 · 唤醒智慧</span>
+  </div>
+  <div class="quote-block">
+    <p>「凡夫向外求财富、求贵人、求答案；觉醒者向内修空性、修能量、修圆满。」</p>
+    <div class="author">—— 一次高维朝圣，破执念、升智慧、通能量、开财富、圆满人生</div>
+  </div>
+</section>
+
+<!-- ===== 报名表单 ===== -->
+<section class="form-section">
+  <div class="form-container">
+    <h2>🙏 预报名登记</h2>
+    <div class="form-sub">席位稀缺，仅留给真正渴望觉醒的同频者</div>
+    <form id="signupForm">
+      <div class="form-row">
+        <div class="form-group">
+          <label>姓名 <span class="required">*</span></label>
+          <input type="text" name="name" required placeholder="您的真实姓名">
+        </div>
+        <div class="form-group">
+          <label>手机号 <span class="required">*</span></label>
+          <input type="tel" name="phone" required placeholder="用于联系确认">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>微信号</label>
+          <input type="text" name="wechat" placeholder="方便工作人员添加">
+        </div>
+        <div class="form-group">
+          <label>出发城市 <span class="required">*</span></label>
+          <input type="text" name="city" required placeholder="如：北京 / 上海 / 成都">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>参加人数 <span class="required">*</span></label>
+          <select name="people" required>
+            <option value="">请选择</option>
+            <option value="1">1人</option>
+            <option value="2">2人</option>
+            <option value="3">3人</option>
+            <option value="4+">4人及以上</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>是否需要单房</label>
+          <select name="singleRoom">
+            <option value="no">不需要（合住标间）</option>
+            <option value="yes">需要单房（补差价）</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>您想解决的问题 / 需求描述</label>
+        <textarea name="question" placeholder="告诉我们您目前最大的困惑或希望解决的问题，导师将针对性准备开示内容…"></textarea>
+      </div>
+      <div class="form-group">
+        <label>您从哪个渠道了解到本次活动？</label>
+        <select name="source">
+          <option value="">请选择</option>
+          <option value="friend">朋友推荐</option>
+          <option value="wechat">微信公众号</option>
+          <option value="xiaohongshu">小红书</option>
+          <option value="douyin">抖音</option>
+          <option value="other">其他渠道</option>
+        </select>
+      </div>
+      <button type="submit" class="submit-btn">ༀ 提交报名信息</button>
+      <p style="text-align:center;font-size:0.75rem;color:#8b7a64;margin-top:12px;">提交后工作人员将在1-2个工作日内与您联系</p>
+    </form>
+  </div>
+</section>
+
+<!-- ===== 底部 ===== -->
+<footer>
+  <div class="om-symbol">ༀ</div>
+  <p>#自在觉行高阶朝圣 · #空性觉醒智慧升维 · #唤醒内在财富重塑生命能量</p>
+  <p style="margin-top:8px;">山河不语，却载千年正法 · 道场无言，却渡万般迷茫</p>
+</footer>
+
+<script>
+document.getElementById('signupForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const btn = this.querySelector('.submit-btn');
+  const orig = btn.textContent;
+  btn.textContent = '🙏 信息已提交，我们将尽快与您联系';
+  btn.style.background = '#27ae60';
+  setTimeout(() => { btn.textContent = orig; btn.style.background = ''; }, 3000);
+});
+</script>
+
+</body>
+</html>
